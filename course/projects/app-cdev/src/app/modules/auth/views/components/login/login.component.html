@@ -1,0 +1,22 @@
+<div class="container w-100 m-auto">
+    <form >
+        <h1>Credenciales</h1>
+    
+        <div class="form-floating">
+            <input type="email" class="form-control" id="inputEmail" (input)="captureInput($event,1)" #emailV>
+            <label for="inputEmail">Ingrese su correo</label>
+        </div>
+    
+        <div class="form-floating">
+            <input type="password" class="form-control" id="inputPass" (input)="captureInput($event, 2)" #passwordV>
+            <label for="inputPass">Ingrese su contraseña</label>
+        </div>
+    
+        <button class="btn btn-primary w-100 py-2" type="button" (click)="login()">Ingresar</button>
+    
+        
+    </form>
+
+</div>
+
+
