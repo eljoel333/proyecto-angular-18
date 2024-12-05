@@ -1,9 +1,20 @@
+
+
 <mat-sidenav-container >
-    <mat-sidenav  opened="true" mode="side" position="start">zona menu
+
+    @if(showMenu){
+
+    <mat-sidenav  opened="true" mode="side" position="start">
+        <cdev-menu></cdev-menu>
        
     </mat-sidenav>
+}
+
     <mat-sidenav-content>
+        @if(showHeader){
         <cdev-header></cdev-header>
+    }
         <cdev-page-login></cdev-page-login>
     </mat-sidenav-content>
+
   </mat-sidenav-container>
