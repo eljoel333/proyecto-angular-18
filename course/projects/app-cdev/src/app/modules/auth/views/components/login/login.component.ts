@@ -1,83 +1,62 @@
-import { Component, ElementRef, viewChild, ViewChild } from '@angular/core';
-import { Validations } from '../../../../../../../../app-cdev-lib/src/public-api';
+import { Component, inject } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'cdev-login',
-  imports: [],
+  standalone: true,
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    RouterLink,
+    ReactiveFormsModule,
+  ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  visibilityPassword = 'password';
+  router = inject(Router);
+  formGroup!: FormGroup;
 
-  private email:string = "";
-  private password:string = "";
-
-  //@ViewChild('emailV') emailInputV!: ElementRef;
-  //@ViewChild('passwordV') passwordInputV!: ElementRef;
-
-  emailInputV = viewChild<ElementRef>('emailV')
-  passwordInputV = viewChild<ElementRef>('passwordV')
-  constructor(){
-
+  constructor(private fb: FormBuilder) {
+    this.createForm();
   }
 
-  validateInputs():boolean{
-    if (this.email=="" || this.password==""){
-      return false;
-    }
-
-    if(!Validations.validateEmail(this.email))
-    {
-      alert('invalid mail');
-      return false;
-    }
-
-    if(!Validations.validatePassword(this.password))
-    {
-      console.log(this.password)
-      alert('invalid password');
-      return false;
-    }
-
-    return true;
+  createForm() {
+    this.formGroup = this.fb.group({
+      email: [null, [Validators.required, Validators.email]],
+      password: [
+        null,
+        [
+          Validators.required,
+          Validators.pattern(
+            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{5,}$/g
+          ),
+        ],
+      ],
+    });
   }
 
-  login():void{
-    console.log("en login")
-
-    if(!this.validateInputs()) return;
-    
-
-    if(this.validateCredentials()){
-      this.resetInputs();
-      alert("todo ok");
-    
-    }
-
-
+  login(): void {
+    const { valid } = this.formGroup;
+    console.log(this.formGroup)
+   //valid && this.router.navigate(['/dashboard']);
   }
 
-  captureInput(event: any, tipo: number){
-    if(tipo==1){
-        this.email = event.target.value;
-
-    }
-    else{
-      this.password = event.target.value;   
-    }
+  changeVisibility() {
+    this.visibilityPassword =
+      this.visibilityPassword === 'password' ? 'text' : 'password';
   }
-
-  validateCredentials():boolean{
-    return this.email == "joel@mail.com" && this.password == "Joel12345" ;
-
-  }
-
-  resetInputs(){
-    const email = this.emailInputV()!;
-    email.nativeElement.value ="";
-    const pass = this.passwordInputV()!;
-    pass.nativeElement.value ="";
-  }
-
-
 }

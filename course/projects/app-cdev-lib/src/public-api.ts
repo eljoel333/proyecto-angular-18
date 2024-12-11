@@ -6,3 +6,8 @@
 //export * from './lib/app-cdev-lib.component';
 
 export * from './lib/validations';
+export * from './lib/modules/layout/layout.type'
+export * from './lib/modules/layout/layout.constant'
+export * from './lib/modules/layout/layout.module'
+export * from './lib/modules/layout/layout.token'
+export * from './lib/modules/layout/layout.service'

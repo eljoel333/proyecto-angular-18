@@ -1,18 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, effect, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LoginComponent } from './modules/auth/views/components/login/login.component';
 import { PageLoginComponent } from './modules/auth/views/pages/page-login/page-login.component';
 import {MatSidenavModule} from '@angular/material/sidenav'
 import { HeaderComponent } from './modules/core/views/components/header/header.component';
 import { MenuComponent } from './modules/core/views/components/menu/menu.component';
+import { LayoutService } from '../../../app-cdev-lib/src/public-api';
 
 
 const modules = [
-  MatSidenavModule
+ RouterOutlet, MatSidenavModule
 ]
 
 const components = [
-  RouterOutlet, PageLoginComponent, HeaderComponent, MenuComponent
+   PageLoginComponent, HeaderComponent, MenuComponent
 ]
 
 @Component({
@@ -23,7 +24,16 @@ const components = [
 })
 export class AppComponent {
   title = 'appCDev';
-
-  showMenu = false;
+  showMenu = true;
   showHeader = true;
+
+
+  constructor(private readonly layoutService: LayoutService){
+effect(()=>{
+this.showMenu = this.layoutService.showMenu();
+this.showHeader = this.layoutService.showHeader();
+})
+  
+    
+  }
 }

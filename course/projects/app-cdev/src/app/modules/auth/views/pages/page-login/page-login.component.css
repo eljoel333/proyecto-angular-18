@@ -1,0 +1,17 @@
+.container-login {
+    display: flex;
+    height: 100vh;
+    justify-content: space-between;
+    background-color: #2173df;
+  }
+  
+  .container-login__intro {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .intro__lottie {
+    height: 90%;
+  }

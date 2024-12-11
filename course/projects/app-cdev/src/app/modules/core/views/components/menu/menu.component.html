@@ -5,7 +5,7 @@
 <ul class="menu">
     @for(item of menuItems; track item.route){
     <li class="menu__item">
-        <a href="{{item.route}}" class="item__link">
+        <a routerLink="{{item.route}}" class="item__link">
             <mat-icon class="link__icon">{{item.icon}}</mat-icon>
             <span class="link__title">{{item.title}}</span>
         </a>
