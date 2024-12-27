@@ -52,7 +52,7 @@ export class LoginComponent {
   login(): void {
     const { valid } = this.formGroup;
     console.log(this.formGroup)
-   //valid && this.router.navigate(['/dashboard']);
+   valid && this.router.navigate(['/dashboard']);
   }
 
   changeVisibility() {

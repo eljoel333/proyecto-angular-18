@@ -6,13 +6,13 @@ import { BaseComponent } from '../../../../core/views/components/base.component'
 @Component({
   selector: 'cdev-page-user',
   imports: [TitleComponent, ContainerComponent],
-  templateUrl: './page-user.component.html',
-  styleUrl: './page-user.component.css'
+  templateUrl: './page-schedule.component.html',
+  styleUrl: './page-schedule.component.css'
 })
-export class PageUserComponent extends BaseComponent {
+export class PageScheduleComponent extends BaseComponent {
 
-  title = 'User';
-    icon = 'people';
+  title = 'schedule';
+    icon = 'schedule';
   
   
   }

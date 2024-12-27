@@ -6,8 +6,22 @@ import { NotFoundComponent } from './modules/core/views/components/not-found/not
 
 export const routes: Routes = [
     {path: "", redirectTo:"/dashboard", pathMatch:"full"},
-    {path:"dashboard", component: PageDashboardComponent},
-    {path:"users", component: PageUserComponent},
+    {path:"dashboard", 
+        loadComponent:()=>
+            import("./modules/dashboard/views/component/page-dashboard/page-dashboard.component").then(m=>m.PageDashboardComponent),
+    },
+    {path:"users", 
+        loadComponent:()=>
+            import('./modules/user/views/component/page-user/page-user.component').then((m)=> m.PageUserComponent),
+    },
     {path: "login", component: PageLoginComponent},
+    {path:"course", 
+        loadComponent:()=>
+            import('./modules/course/views/component/page-course/page-course.component').then((m)=> m.PageCourseComponent),
+    },
+    {path:"schedule", 
+        loadComponent:()=>
+            import('./modules/schedule/views/component/page-schedule/page-schedule.component').then((m)=> m.PageScheduleComponent),
+    },
     {path:"**", component:NotFoundComponent}
 ];

@@ -4,16 +4,15 @@ import { BaseComponent } from '../../../../core/views/components/base.component'
 
 
 @Component({
-  selector: 'cdev-page-user',
+  selector: 'cdev-page-course',
   imports: [TitleComponent, ContainerComponent],
-  templateUrl: './page-user.component.html',
-  styleUrl: './page-user.component.css'
+  templateUrl: './page-course.component.html',
+  styleUrl: './page-course.component.css'
 })
-export class PageUserComponent extends BaseComponent {
+export class PageCourseComponent extends BaseComponent{
+  
+title = 'Courseee';
+icon= 'settings'
 
-  title = 'User';
-    icon = 'people';
-  
-  
-  }
-  
+
+}

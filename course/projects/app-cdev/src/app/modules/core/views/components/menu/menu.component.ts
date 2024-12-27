@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 type MenuItem = {
   route: string;
@@ -10,16 +10,17 @@ type MenuItem = {
 
 @Component({
   selector: 'cdev-menu',
-  imports: [MatIconModule, RouterLink],
+  imports: [MatIconModule, RouterLink, RouterLinkActive],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
 
   menuItems: MenuItem[] = [
-    {route: '/', icon:'dashboard', title:'Dashboard'},
+    {route: '/dashboard', icon:'dashboard', title:'Dashboard'},
     {route: '/users', icon:'people', title:'Users'},
-    {route: '/settings', icon:'settings', title:'Settings'},
+    {route: '/course', icon:'settings', title:'Courses'},
+    {route: '/schedule', icon: 'schedule', title: 'Schedule'}
     
   ];
 
