@@ -11,7 +11,7 @@ import { BaseComponent } from '../../../../core/views/components/base.component'
 })
 export class PageCourseComponent extends BaseComponent{
   
-title = 'Courseee';
+title = 'Courseee con commit';
 icon= 'settings'
 
 
